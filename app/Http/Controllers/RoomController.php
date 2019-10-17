@@ -62,9 +62,10 @@ class RoomController extends Controller
      * @param  \App\Room  $room
      * @return \Illuminate\Http\Response
      */
-    public function show(Room $room)
+    public function show($id)
     {
-        //
+        $room = Room::find($room->id);
+        return view('rooms.detail', compact('room'));
     }
 
     /**
@@ -95,6 +96,7 @@ class RoomController extends Controller
             'beds'=>'required'
         ]);
 
+        $room = Room::find($id);
         $rooms->save();
         return redirect()->back();
     }

@@ -41,7 +41,31 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         // Validate the Form
+         $request->validate([
+            'client_id' => 'required',
+            'room_id' => 'required',
+            'start_date' => 'required',
+            'end_date' => 'required',
+        ]);
+
+        // Save into Database
+        Booking::create([
+            'client_id' => $request->client_id,
+            'room_id' => $request->room_id,
+            'user_id' => auth()->user()->id,
+            'start_date' => $request->start_date,
+            'end_date' => $request->end_date,
+        ]);
+
+        // Update Rooms status
+        $room = Room::find($request->room_id);
+        $room->status = 0;
+        $room->save();
+
+        session()->flash('msg', 'The Room Has been booked');
+
+        return redirect('/booking');
     }
 
     /**

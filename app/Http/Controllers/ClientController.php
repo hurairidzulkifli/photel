@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Client;
+use App\Booking;
 use Session;
 
 class ClientController extends Controller
@@ -16,8 +17,9 @@ class ClientController extends Controller
 
     public function index()
     {
+        $bookings = Booking::all();
         $clients = Client::all();
-        return view('clients.index',compact('clients'));
+        return view('clients.index',compact('clients','bookings'));
     }
 
     public function create()
@@ -82,8 +84,9 @@ class ClientController extends Controller
 
     public function show($id)
     {
-        $clients = Client::find($id);
-        return view('clients.show',compact('clients'));
+        $bookings = Booking::where('client_id', $id)->get()->all(); //specific booking to user id
+        $client = Client::find($id);
+        return view('clients.show',compact('client','bookings'));
     }
 
     public function destroy($id)
