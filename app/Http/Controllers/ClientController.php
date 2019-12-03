@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Client;
 use App\Booking;
+use App\Client;
+use Illuminate\Http\Request;
 use Session;
 
 class ClientController extends Controller
 {
-    
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -19,7 +19,7 @@ class ClientController extends Controller
     {
         $bookings = Booking::all();
         $clients = Client::all();
-        return view('clients.index',compact('clients','bookings'));
+        return view('clients.index', compact('clients', 'bookings'));
     }
 
     public function create()
@@ -27,13 +27,13 @@ class ClientController extends Controller
         return view('clients.create');
     }
 
-    public function store(Request $request )
+    public function store(Request $request)
     {
         $request->validate([
             'name' => 'required',
             'email' => 'required|email',
             'phone' => 'required',
-            'image' => 'required|image'
+            'image' => 'required|image',
         ]);
 
         // Check if there is any file
@@ -47,7 +47,7 @@ class ClientController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'phone' => $request->phone,
-            'image' => $request->image->getClientOriginalName()
+            'image' => $request->image->getClientOriginalName(),
         ]);
 
         // Stored a Message in session
@@ -58,16 +58,16 @@ class ClientController extends Controller
     public function edit($id)
     {
         $clients = Client::find($id);
-        return view('clients.edit',compact('clients'));
+        return view('clients.edit', compact('clients'));
     }
 
-    public function update($id)
+    public function update(Request $request, $id)
     {
         $request->validate([
             'name' => 'required',
             'email' => 'required|email',
             'phone' => 'required',
-            'image' => 'required|image'
+            'image' => 'required|image',
         ]);
 
         // Check if there is any file
@@ -76,9 +76,8 @@ class ClientController extends Controller
             $image->move("uploads", $image->getClientOriginalName());
         }
 
-        $clients->save();
+        $client->save();
         return redirect()->back();
-
 
     }
 
@@ -86,7 +85,7 @@ class ClientController extends Controller
     {
         $bookings = Booking::where('client_id', $id)->get()->all(); //specific booking to user id
         $client = Client::find($id);
-        return view('clients.show',compact('client','bookings'));
+        return view('clients.show', compact('client', 'bookings'));
     }
 
     public function destroy($id)

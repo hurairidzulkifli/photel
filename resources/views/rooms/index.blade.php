@@ -16,6 +16,13 @@
               <p>{{$room->name}}</p>
               <p>{{$room->beds}}</p>
               <p>{{$room->floor}}</p>
+              <td>
+                @if ($room->status)
+                <span class="badge badge-pill badge-success">Available</span>
+                @else
+                <span class="badge badge-pill badge-danger">Booked</span>
+                @endif
+            </td>
             </div>
             <div class="card-footer">
                     <small class="text-muted">{{$room->created_at}}</small>

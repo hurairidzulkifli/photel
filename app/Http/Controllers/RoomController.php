@@ -6,7 +6,6 @@ use App\Room;
 use App\Session;
 use Illuminate\Http\Request;
 
-
 class RoomController extends Controller
 {
     /**
@@ -17,7 +16,7 @@ class RoomController extends Controller
     public function index()
     {
         $rooms = Room::all();
-        return view('rooms.index',compact('rooms'));
+        return view('rooms.index', compact('rooms'));
     }
 
     /**
@@ -39,17 +38,17 @@ class RoomController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name'=>'required',
-            'floor'=>'required',
-            'type'=>'required',
-            'beds'=>'required'
+            'name' => 'required',
+            'floor' => 'required',
+            'type' => 'required',
+            'beds' => 'required',
         ]);
 
         Room::create([
-            'name'=>$request->name,
-            'floor'=>$request->floor,
-            'type'=>$request->type,
-            'beds'=>$request->beds
+            'name' => $request->name,
+            'floor' => $request->floor,
+            'type' => $request->type,
+            'beds' => $request->beds,
         ]);
 
         $request->session()->flash('msg', 'Room has been added');
@@ -64,7 +63,7 @@ class RoomController extends Controller
      */
     public function show($id)
     {
-        $room = Room::find($room->id);
+        $room = Room::find($id);
         return view('rooms.detail', compact('room'));
     }
 
@@ -77,7 +76,7 @@ class RoomController extends Controller
     public function edit($id)
     {
         $rooms = Room::find($id);
-        return view('rooms.edit',compact('rooms'));
+        return view('rooms.edit', compact('rooms'));
     }
 
     /**
@@ -87,17 +86,17 @@ class RoomController extends Controller
      * @param  \App\Room  $room
      * @return \Illuminate\Http\Response
      */
-    public function update($id)
+    public function update(Request $request, $id)
     {
         $request->validate([
-            'name'=>'required',
-            'floor'=>'required',
-            'type'=>'required',
-            'beds'=>'required'
+            'name' => 'required',
+            'floor' => 'required',
+            'type' => 'required',
+            'beds' => 'required',
         ]);
 
         $room = Room::find($id);
-        $rooms->save();
+        $room->save();
         return redirect()->back();
     }
 

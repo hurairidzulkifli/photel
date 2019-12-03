@@ -5,6 +5,8 @@
      <div class="card">
           <div class="card-header">Book A Room</div>
           <div class="card-body">
+                <form action="{{ route('bookings.store') }}" method="post"> 
+                        {{csrf_field()}}
                <div class="form-group">
                     <label for="category">Select a Client</label>
                     <select name="client_id" id="client" class="form-control">
@@ -31,10 +33,10 @@
                </div>
                <div class="form-group">
                     <div class="text-center">
-                        <button class="btn btn-success " type="submit">
+                        <button class="btn btn-success" type="submit">
                             Book Room
                         </button>
-                        <a href="#" class="btn btn-info" role="button">View Room</a>
+                        <a href="{{route('rooms.index')}}" class="btn btn-info" role="button">View Room</a>
                 </div>   
             </form>
         </div> 

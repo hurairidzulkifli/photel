@@ -41,8 +41,8 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
-         // Validate the Form
-         $request->validate([
+        // Validate the Form
+        $request->validate([
             'client_id' => 'required',
             'room_id' => 'required',
             'start_date' => 'required',
@@ -65,7 +65,7 @@ class BookingController extends Controller
 
         session()->flash('msg', 'The Room Has been booked');
 
-        return redirect('/booking');
+        return redirect()->route('bookings.index');
     }
 
     /**
