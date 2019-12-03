@@ -16,7 +16,7 @@ class BookingController extends Controller
      */
     public function index()
     {
-        $bookings = Booking::all();
+        $bookings = Booking::latest()->get();
         return view('bookings.index', compact('bookings'));
     }
 
