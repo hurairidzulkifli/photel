@@ -7,7 +7,7 @@
 <div class="container">
      <div class="row">
  @foreach($rooms as $room)
- <div class="card-deck">
+ <div class="card-deck mx-auto">
           <div class="card" style="width: 18rem;">
             <img src="{{asset('uploads/2.jpg')}}"  style="width:287px; height:250;" class="card-img-top" alt="...">
             <div class="card-body">
@@ -25,7 +25,7 @@
             </td>
             </div>
             <div class="card-footer">
-                    <small class="text-muted">{{$room->created_at}}</small>
+                   <a href="{{route('rooms.edit',['id'=>$room->id])}}" class="badge badge-dark float-right">Edit</a>
           </div>
           </div>
           @endforeach

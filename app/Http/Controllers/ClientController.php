@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Booking;
 use App\Client;
 use Illuminate\Http\Request;
-use Session;
 
 class ClientController extends Controller
 {
@@ -51,7 +50,7 @@ class ClientController extends Controller
         ]);
 
         // Stored a Message in session
-        $request->session()->flash('msg', 'Client has been added');
+
         return redirect()->route('clients');
     }
 
@@ -90,9 +89,7 @@ class ClientController extends Controller
 
     public function destroy($id)
     {
-        $clients = Client::find($id);
-        $clients->destroy();
-
-        return redirect()->route('clients.index');
+        Client::destroy($id);
+        return redirect()->back();
     }
 }

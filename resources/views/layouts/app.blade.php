@@ -19,6 +19,10 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel=”stylesheet” href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">
+    <script src="js/sweetalert.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+    
 </head>
 <body>
     <div id="app">
@@ -74,6 +78,8 @@
         <main class="py-4">
             @yield('content')
         </main>
+         
+         @include('sweet::alert')
     </div>
 </body>
 </html>

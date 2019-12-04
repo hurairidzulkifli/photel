@@ -30,11 +30,11 @@
                                    <td>{{$client->email}}</td>
                                    <td>{{$client->phone}}</td>
                                    <td><a href="{{route('clients.edit',['id'=> $client->id])}}" class="badge badge-dark">Edit</a>
-                                        <form action="{{ route('clients.destroy',['id'=> $client->id]) }}" method="post">
-                                                  {{csrf_field() }}
-                                                  {{method_field('DELETE')}}
-                                                  <button class="badge badge-danger" type="submit">Delete</button>     
-                                             </form>
+                                        <form action="{{ route('clients.destroy',['id'=> $client->id]) }}" method="get">
+                                             {{csrf_field() }}
+                                             {{method_field('DELETE')}}
+                                             <button class="badge badge-danger" type="submit">Delete</button>     
+                                        </form>
                                    </td>
                               @endforeach
                               </tr>

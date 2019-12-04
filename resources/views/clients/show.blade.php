@@ -18,8 +18,8 @@
                       pHotel
                     </div>
                   </div>
-
-                  @if ($bookings)
+                <p style="text-center">History</p>
+                  @if($bookings)
                   <table class="table table-hover table-striped table-bordered mt-1">
                       <thead>
                       <tr>

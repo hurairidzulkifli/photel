@@ -76,7 +76,7 @@ class BookingController extends Controller
      */
     public function show(Booking $booking)
     {
-        //
+        //c
     }
 
     /**
@@ -85,9 +85,12 @@ class BookingController extends Controller
      * @param  \App\Booking  $booking
      * @return \Illuminate\Http\Response
      */
-    public function edit(Booking $booking)
+    public function edit($id)
     {
-        //
+        $booking = Booking::find($id);
+        $clients = Client::all();
+        $rooms = Room::where('status', 1)->get();
+        return view('bookings.edit', compact('booking', 'clients', 'rooms'));
     }
 
     /**
@@ -97,9 +100,12 @@ class BookingController extends Controller
      * @param  \App\Booking  $booking
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Booking $booking)
+    public function update(Request $request, $id)
     {
-        //
+        $booking = Booking::find($id);
+        $booking->update($request->all());
+        $request->session()->flash('msg', 'Booking has been updated');
+        return redirect('/bookings');
     }
 
     /**
@@ -108,8 +114,29 @@ class BookingController extends Controller
      * @param  \App\Booking  $booking
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Booking $booking)
+    public function destroy($id)
     {
-        //
+        Booking::destroy($id);
+        // $request->session()->flash('msg', 'Booking has been deleted');
+        return redirect('bookings');
+    }
+
+    public function cancel($room_id, $booking_id)
+    {
+        $booking = Booking::find($booking_id);
+        $room = Room::find($room_id);
+        $booking->status = 0;
+        $booking->user_id = auth()->id();
+        $booking->save();
+        $room->status = 1;
+        $room->save();
+        session()->flash('msg', 'Booking has been canceled');
+        return redirect('/bookings');
+    }
+
+    public function canceledBookings()
+    {
+        $canceledBookings = Booking::where('status', 0)->get();
+        return view('bookings.canceled', compact('canceledBookings'));
     }
 }

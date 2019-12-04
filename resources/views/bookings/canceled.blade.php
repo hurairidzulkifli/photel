@@ -3,10 +3,8 @@
 @section('content')
 <div class="container">
      <div class="card">
-          <div class="card-header">Booking List</div>
+          <div class="card-header">Canceled Booking List</div>
           <div class="card-body">
-               <a href="{{route('bookings.create')}}" class="btn btn-primary">Book A Room</a><br>
-               <br>
                <div class="table-responsive">          
                     <table class="table table-bordered">
                       <thead>
@@ -23,7 +21,7 @@
                               <th>Action</th>
                          </tr>
                     </thead>
-                    @foreach($bookings as $booking)
+                    @foreach($canceledBookings as $booking)
                     <tbody>  
                          <td>{{ $booking->id }}</td>
                          <td><a href="clients/show/{{ $booking->client->id }}">{{ $booking->client->name }}</a></td>
@@ -37,22 +35,9 @@
                                    @if ($booking->status)
                                    <span class="badge badge-pill badge-success">Booked</span>
                                    @else
-                                   <span class="badge badge-pill badge-secondary">Available</span>
+                                   <span class="badge badge-pill badge-secondary">Canceled</span>
                                    @endif
                                </td>
-                         <td>
-                              <a href="{{route('bookings.edit',['id'=>$booking->id])}}" class="badge badge-pill badge-dark">Edit</a>
-                              <form action="{{ route('bookings.destroy',['id'=> $booking->id]) }}" method="post">
-                                   {{csrf_field() }}
-                                   {{method_field('DELETE')}}
-                                   <button class="badge badge-pill badge-danger" type="submit">Delete</button>     
-                              </form>
-                              <form action="{{ route('bookings.cancel',['id'=> $booking->id,'room_id'=>$booking->room_id]) }}"method="post">
-                                   {{csrf_field() }}
-                                   <button class="badge badge-pill badge-warning" type="submit">Cancel</button>     
-                              </form>
-                         </td>
-                        
                          @endforeach
                     </tbody>
           </div>
@@ -60,3 +45,4 @@
 </div>
 </div>
 @endsection
+
