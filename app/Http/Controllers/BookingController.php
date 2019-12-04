@@ -6,6 +6,7 @@ use App\Booking;
 use App\Client;
 use App\Room;
 use Illuminate\Http\Request;
+use Session;
 
 class BookingController extends Controller
 {
@@ -58,13 +59,14 @@ class BookingController extends Controller
             'end_date' => $request->end_date,
         ]);
 
+        Session::flash('success','Booking successful.');
+
         // Update Rooms status
         $room = Room::find($request->room_id);
         $room->status = 0;
         $room->save();
 
-        session()->flash('msg', 'The Room Has been booked');
-
+        Session::flash('success','Booking successful.');
         return redirect()->route('bookings.index');
     }
 
@@ -104,7 +106,7 @@ class BookingController extends Controller
     {
         $booking = Booking::find($id);
         $booking->update($request->all());
-        $request->session()->flash('msg', 'Booking has been updated');
+        Session::flash('success','Booking details is successfully updated.');
         return redirect('/bookings');
     }
 
@@ -117,7 +119,7 @@ class BookingController extends Controller
     public function destroy($id)
     {
         Booking::destroy($id);
-        // $request->session()->flash('msg', 'Booking has been deleted');
+        Session::flash('success','Booking is successfully deleted.');
         return redirect('bookings');
     }
 
@@ -130,7 +132,7 @@ class BookingController extends Controller
         $booking->save();
         $room->status = 1;
         $room->save();
-        session()->flash('msg', 'Booking has been canceled');
+        Session::flash('success','Booking is successfully canceled.');
         return redirect('/bookings');
     }
 

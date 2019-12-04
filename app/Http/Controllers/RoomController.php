@@ -51,7 +51,7 @@ class RoomController extends Controller
             'beds' => $request->beds,
         ]);
 
-        $request->session()->flash('msg', 'Room has been added');
+        Session::flash('success','Room is successfully added.');
         return redirect()->route('rooms');
     }
 
@@ -97,6 +97,7 @@ class RoomController extends Controller
 
         $room = Room::find($id);
         $room->save();
+        Session::flash('success','Room details is successfully updated.');
         return redirect()->back();
     }
 
@@ -108,6 +109,7 @@ class RoomController extends Controller
      */
     public function destroy(Room $room)
     {
-        //
+        Room::destroy($id);
+        Session::flash('success','Rooms is deleted.');
     }
 }

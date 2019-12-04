@@ -2,6 +2,7 @@
 
 
 @section('content')
+@include('includes.errors')
 <div class="container">
           <div class="card">
                <div class="card-header">Update Client Details</div>
@@ -11,15 +12,15 @@
                               {{ method_field('PUT') }}
                               <div class="form-group">
                                   <label for="title">Name</label>
-                                  <input type="text" name="name" class="form-control">
+                                  <input type="text" name="name" value="{{$client->name}}" class="form-control">
                               </div>
                               <div class="form-group">
                                         <label for="title">Email</label>
-                                        <input type="email" name="email" class="form-control">
+                                        <input type="email" name="email" value="{{$client->email}}" class="form-control">
                               </div>
                               <div class="form-group">
                                         <label for="title">Contact Number</label>
-                                        <input type="text" name="phone" class="form-control">
+                                        <input type="text" name="phone" value="{{$client->phone}}" class="form-control">
                               </div>
                               <div class="form-group">
                                         <label for="title">Contact Number</label>

@@ -2,6 +2,7 @@
 
 
 @section('content')
+@include('includes.errors')
 <div class="container">
      <div class="card">
           <div class="card-header">Add Client</div>

@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+@include('includes.errors')
 <div class="container">
      <div class="card">
           <div class="card-header">Book A Room</div>

@@ -19,9 +19,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel=”stylesheet” href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">
-    <script src="js/sweetalert.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="{{asset('css/toastr.min.css')}}"> 
     
 </head>
 <body>
@@ -78,8 +76,21 @@
         <main class="py-4">
             @yield('content')
         </main>
-         
-         @include('sweet::alert')
     </div>
+     <!-- Scripts -->
+     <script src="/js/app.js"></script>
+     <script src="{{asset('js/toastr.min.js')}}"></script>
+     <script>
+     @if(Session::has('success'))
+             toastr.success("{{ Session::get('success')}}")
+     @endif
+     </script>
+     <script>
+     @if(Session::has('info'))
+             toastr.info("{{ Session::get('info')}}")
+     @endif
+     </script>
+     @yield('scripts')
+ 
 </body>
 </html>

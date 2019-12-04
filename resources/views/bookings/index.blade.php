@@ -47,12 +47,13 @@
                                    {{method_field('DELETE')}}
                                    <button class="badge badge-pill badge-danger" type="submit">Delete</button>     
                               </form>
+                              @if($booking->status==1)
                               <form action="{{ route('bookings.cancel',['id'=> $booking->id,'room_id'=>$booking->room_id]) }}"method="post">
-                                   {{csrf_field() }}
-                                   <button class="badge badge-pill badge-warning" type="submit">Cancel</button>     
+                                        {{csrf_field() }}
+                                        <button class="badge badge-pill badge-warning" type="submit">Cancel</button>     
                               </form>
+                              @endif
                          </td>
-                        
                          @endforeach
                     </tbody>
           </div>
