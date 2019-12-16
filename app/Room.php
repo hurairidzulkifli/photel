@@ -6,5 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Room extends Model
 {
-    protected $dates = ['created_at'];
+   
+    protected $guarded = [];
+
+    // public function booking()
+    // {
+    //     return $this->belongsTo(Booking::class);
+    // }
+
+    // public function client()
+    // {
+    //     return $this->belongsTo(Client::class);
+    // }
 }

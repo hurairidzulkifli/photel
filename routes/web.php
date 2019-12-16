@@ -38,3 +38,4 @@ Route::post('bookings/{room_id}/{booking_id}', 'BookingController@cancel')->name
 
 //View Canceled Bookings
 Route::get('bookings/canceled', 'BookingController@canceledBookings')->name('bookings.canceled');
+Route::get('users', 'UserController@index')->name('users.index');

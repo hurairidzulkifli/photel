@@ -25,8 +25,8 @@
                          <label for="Floor">Type</label>
                          <select name=type class="form-control">
                                    <option value="Standard">Standard</option>
-                                   <option value="Deluxe">Standard</option>
-                                   <option value="Family Room">Standard</option>
+                                   <option value="Deluxe">Deluxe</option>
+                                   <option value="Family Room">Family Room</option>
                          </select>
                </div>
                <div class="form-group">

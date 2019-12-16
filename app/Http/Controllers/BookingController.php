@@ -17,7 +17,8 @@ class BookingController extends Controller
      */
     public function index()
     {
-        $bookings = Booking::latest()->get();
+        //$bookings = Booking::latest()->get();
+        $bookings = Booking::with('room','client')->latest()->get();
         return view('bookings.index', compact('bookings'));
     }
 
@@ -30,7 +31,10 @@ class BookingController extends Controller
     {
         $booking = new Booking();
         $clients = Client::all();
-        $rooms = Room::where('status', 1)->get();
+
+        // $rooms = Room::with('availableRooms')->get();
+        $rooms = Room::where('status',1)->get();
+
         return view('bookings.create', compact('clients', 'rooms', 'booking'));
     }
 

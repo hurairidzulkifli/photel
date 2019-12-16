@@ -23,4 +23,9 @@ class Booking extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    // public function availableRooms()
+    // {
+    //     return $this->belongsTo(Room::class)->where('status', 1);
+    // }
 }

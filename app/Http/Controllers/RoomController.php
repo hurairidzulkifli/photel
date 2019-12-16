@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Room;
-use App\Session;
+use Session;
 use Illuminate\Http\Request;
 
 class RoomController extends Controller
@@ -52,7 +52,7 @@ class RoomController extends Controller
         ]);
 
         Session::flash('success','Room is successfully added.');
-        return redirect()->route('rooms');
+        return redirect()->route('rooms.index');
     }
 
     /**

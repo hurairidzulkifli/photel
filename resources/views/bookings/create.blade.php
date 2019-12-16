@@ -13,7 +13,7 @@
                     <label for="category">Select a Client</label>
                     <select name="client_id" id="client" class="form-control">
                         @foreach($clients as $client)
-                        <option value="{{$client->id}}">{{$client->name}}</option>
+                            <option value="{{$client->id}}">{{$client->name}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -35,10 +35,10 @@
                </div>
                <div class="form-group">
                     <div class="text-center">
-                        <button class="btn btn-success" type="submit">
-                            Book Room
-                        </button>
-                        <a href="{{route('rooms.index')}}" class="btn btn-info" role="button">View Room</a>
+                    <button class="btn btn-success" type="submit">
+                        Book Room
+                    </button>
+                    <a href="{{route('rooms.index')}}" class="btn btn-info" role="button">View Room</a>
                 </div>   
             </form>
         </div> 
