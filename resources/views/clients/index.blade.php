@@ -40,6 +40,7 @@
                               </tr>
                          </tbody>
                </table>
+               <a href="{{route('home')}}" class="btn btn-info" style="margin-left:470px;">Dashboard</a>
           </div>
      </div>
 </div>

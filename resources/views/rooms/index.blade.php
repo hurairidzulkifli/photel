@@ -34,6 +34,6 @@
       </div>
   </div>
       <br>
-      <a href="{{route('home')}}" class="btn btn-info" style="margin-left:500px;">Dashboard</a>
+      <a href="{{route('home')}}" class="btn btn-info" style="margin-left:475px;">Dashboard</a>
 </div>
 @endsection

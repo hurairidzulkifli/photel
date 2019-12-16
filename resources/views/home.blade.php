@@ -16,7 +16,7 @@
                                         <i class="fa fa-table fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div>Total Rooms</div>
+                                        <div>&nbsp; &nbsp;Total Rooms</div>
                                         <div class="huge">{{ $rooms->count() }}</div>
                                     </div>
                                 </div>
@@ -41,7 +41,7 @@
                                         <i class="fa fa-users fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div>Total Clients</div>
+                                        <div>&nbsp; &nbsp;Total Clients</div>
                                         <div class="huge">{{ $clients->count() }}</div>  
                                     </div>
                                 </div>
@@ -64,7 +64,7 @@
                                             <i class="fa fa-calendar-o fa-5x"></i>
                                         </div>
                                         <div class="col-xs-9 text-right">
-                                            <div>Total Bookings</div>
+                                            <div>&nbsp; &nbsp;Total Bookings</div>
                                             <div class="huge">{{ $bookings->count() }}</div>
                                         </div>
                                     </div>
@@ -87,7 +87,7 @@
                                             <i class="fa fa-id-card-o fa-5x"></i>
                                         </div>
                                         <div class="col-xs-9 text-right">
-                                            <div>Administrator</div>
+                                            <div>&nbsp; &nbsp;Administrator</div>
                                             <div class="huge">{{ $bookings->count() }}</div>
                                         </div>
                                     </div>
